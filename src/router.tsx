@@ -61,6 +61,7 @@ export const getRouter = () => {
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
     defaultErrorComponent: DefaultErrorComponent,
+    basename: import.meta.env.PROD ? '/ai-fake-news-detection' : '/',
   });
 
   return router;
