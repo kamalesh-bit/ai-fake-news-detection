@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // This script handles the redirect for GitHub Pages SPA routing
+      // When someone tries to access a route that doesn't exist as a file,
+      // GitHub Pages shows this 404.html. We redirect to index.html with the route in the query string.
+      
+      var pathSegments = location.pathname.split('/').filter(Boolean);
+      // Remove the repository name (first segment)
+      if (pathSegments.length > 0) {
+        pathSegments.shift(); // Remove 'ai-fake-news-detection'
+      }
+      
+      var redirectPath = '/' + pathSegments.join('/');
+      if (location.search) {
+        redirectPath += location.search;
+      }
+      if (location.hash) {
+        redirectPath += location.hash;
+      }
+      
+      // Store the redirect path and reload with index.html
+      sessionStorage.redirect = location.origin + '/ai-fake-news-detection/?' + redirectPath;
+      location.href = '/ai-fake-news-detection/';
+    </script>
+  </head>
+  <body></body>
+</html>
+
